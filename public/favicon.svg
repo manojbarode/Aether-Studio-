@@ -1,28 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="bg" x1="8" y1="5" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#17152d" />
-      <stop offset="1" stop-color="#080a13" />
+    <linearGradient id="tile" x1="9" y1="4" x2="55" y2="61" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#282043" />
+      <stop offset="1" stop-color="#100e1c" />
     </linearGradient>
-    <linearGradient id="orb" x1="14" y1="19" x2="52" y2="47" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f2dcff" />
-      <stop offset=".48" stop-color="#c08aff" />
-      <stop offset="1" stop-color="#765cff" />
+    <linearGradient id="mark" x1="17" y1="48" x2="44" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9878ff" />
+      <stop offset=".52" stop-color="#c4a5ff" />
+      <stop offset="1" stop-color="#fff0ff" />
     </linearGradient>
-    <linearGradient id="core" x1="24" y1="20" x2="41" y2="46" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff" />
-      <stop offset="1" stop-color="#bca5ff" />
-    </linearGradient>
-    <filter id="soft-glow" x="4" y="7" width="56" height="50" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-      <feGaussianBlur stdDeviation="3" />
+    <filter id="aura" x="10" y="7" width="44" height="52" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3.2" />
     </filter>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="19" fill="url(#bg)" />
-  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="18.25" stroke="#d7c5ff" stroke-opacity=".18" stroke-width="1.5" />
-  <ellipse cx="32" cy="32" rx="20" ry="9.5" transform="rotate(-35 32 32)" fill="none" stroke="#a477ff" stroke-width="6" opacity=".55" filter="url(#soft-glow)" />
-  <ellipse cx="32" cy="32" rx="20" ry="9.5" transform="rotate(-35 32 32)" fill="none" stroke="url(#orb)" stroke-linecap="round" stroke-width="3.4" />
-  <path d="m32 19 12.5 26h-25L32 19Z" fill="url(#core)" />
-  <path d="m32 26-7.1 15h14.2L32 26Z" fill="#17152d" />
-  <circle cx="49" cy="18" r="3.2" fill="#fff" />
-  <circle cx="49" cy="18" r="5.8" fill="#bb8aff" opacity=".22" />
+  <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#tile)" />
+  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="17.25" stroke="#d8c9ff" stroke-opacity=".2" stroke-width="1.5" />
+  <path d="M19 47 31.1 18.8c.35-.83 1.52-.83 1.88 0L45 47M24.1 36h15.8" fill="none" stroke="#a681ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.5" opacity=".68" filter="url(#aura)" />
+  <path d="M19 47 31.1 18.8c.35-.83 1.52-.83 1.88 0L45 47M24.1 36h15.8" fill="none" stroke="url(#mark)" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+  <path d="M48.5 13.5v7m-3.5-3.5h7" stroke="#fff" stroke-linecap="round" stroke-width="2" />
 </svg>
