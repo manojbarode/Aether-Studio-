@@ -1,22 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="tile" x1="8" y1="4" x2="57" y2="62" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#20223b" />
-      <stop offset="1" stop-color="#0c0e1b" />
+    <linearGradient id="bg" x1="8" y1="5" x2="56" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17152d" />
+      <stop offset="1" stop-color="#080a13" />
     </linearGradient>
-    <linearGradient id="aether" x1="18" y1="12" x2="49" y2="49" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#e5d8ff" />
-      <stop offset=".48" stop-color="#aa8cff" />
-      <stop offset="1" stop-color="#7258ff" />
+    <linearGradient id="orb" x1="14" y1="19" x2="52" y2="47" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f2dcff" />
+      <stop offset=".48" stop-color="#c08aff" />
+      <stop offset="1" stop-color="#765cff" />
     </linearGradient>
-    <filter id="glow" x="8" y="5" width="48" height="55" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-      <feGaussianBlur stdDeviation="2.1" />
+    <linearGradient id="core" x1="24" y1="20" x2="41" y2="46" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" />
+      <stop offset="1" stop-color="#bca5ff" />
+    </linearGradient>
+    <filter id="soft-glow" x="4" y="7" width="56" height="50" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3" />
     </filter>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="19" fill="url(#tile)" />
-  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="18.25" stroke="#c2adff" stroke-opacity=".2" stroke-width="1.5" />
-  <path d="m32 12 18 36H14l18-36Z" fill="none" stroke="#987bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" opacity=".7" filter="url(#glow)" />
-  <path d="m32 12 18 36H14l18-36Z" fill="none" stroke="url(#aether)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
-  <path d="M22.5 38h19" stroke="#f3efff" stroke-linecap="round" stroke-width="3.5" />
-  <circle cx="32" cy="12" r="2.6" fill="#fff" />
+  <rect x="2" y="2" width="60" height="60" rx="19" fill="url(#bg)" />
+  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="18.25" stroke="#d7c5ff" stroke-opacity=".18" stroke-width="1.5" />
+  <ellipse cx="32" cy="32" rx="20" ry="9.5" transform="rotate(-35 32 32)" fill="none" stroke="#a477ff" stroke-width="6" opacity=".55" filter="url(#soft-glow)" />
+  <ellipse cx="32" cy="32" rx="20" ry="9.5" transform="rotate(-35 32 32)" fill="none" stroke="url(#orb)" stroke-linecap="round" stroke-width="3.4" />
+  <path d="m32 19 12.5 26h-25L32 19Z" fill="url(#core)" />
+  <path d="m32 26-7.1 15h14.2L32 26Z" fill="#17152d" />
+  <circle cx="49" cy="18" r="3.2" fill="#fff" />
+  <circle cx="49" cy="18" r="5.8" fill="#bb8aff" opacity=".22" />
 </svg>
