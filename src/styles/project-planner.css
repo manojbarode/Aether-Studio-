@@ -671,6 +671,10 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .planner-layout > * {
+    min-width: 0;
+  }
+
   .planner-result {
     position: relative;
     top: auto;

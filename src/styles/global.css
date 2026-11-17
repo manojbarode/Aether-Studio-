@@ -2559,7 +2559,11 @@ main > .section:nth-of-type(even) {
   }
 
   .section {
-    padding-block: clamp(4.5rem, 12vw, 6.5rem);
+    padding-block: clamp(3.25rem, 8vw, 4.5rem);
+  }
+
+  .section--tight {
+    padding-block: clamp(2.75rem, 7vw, 3.75rem);
   }
 
   .section-header {
@@ -2778,6 +2782,17 @@ main > .section:nth-of-type(even) {
     right: 1rem;
     bottom: 1rem;
   }
+
+  .container {
+    width: min(90%, 100% - 2rem);
+  }
+
+  .modal,
+  .project-modal,
+  .service-modal {
+    width: 100%;
+    max-width: calc(100vw - 1.25rem);
+  }
 }
 
 @media (max-width: 560px) {
@@ -2796,6 +2811,10 @@ main > .section:nth-of-type(even) {
 }
 
 @media (max-width: 360px) {
+  .container {
+    width: calc(100% - 1.5rem);
+  }
+
   .brand-sub {
     display: none;
   }
