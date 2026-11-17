@@ -1,0 +1,537 @@
+/* Process — scroll-driven step showcase. The panel pins while the track
+   is tall enough for six steps; tab fills follow scroll progress. */
+.pr-section {
+  overflow: clip;
+}
+
+.pr-track {
+  position: relative;
+}
+
+.pr-section.is-scrub .pr-track {
+  height: 620vh;
+}
+
+.pr-sticky {
+  position: relative;
+}
+
+.pr-section.is-scrub .pr-sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 10px);
+  z-index: 4;
+  padding-bottom: 1.2rem;
+}
+
+.pr-shell {
+  position: relative;
+}
+
+/* ---- Tabs ---- */
+.pr-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.pr-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.15rem 1rem 0.95rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition), color var(--transition),
+    transform var(--transition), box-shadow var(--transition);
+}
+
+.pr-tab:hover {
+  border-color: var(--border-strong);
+  color: var(--text-soft);
+}
+
+.pr-tab.is-active {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--surface-strong);
+  color: var(--text);
+  box-shadow: 0 14px 38px var(--glow-violet);
+  transform: translateY(-3px);
+}
+
+.pr-tab-bar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--border);
+}
+
+.pr-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+.pr-tab-num {
+  color: var(--faint);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.pr-tab.is-active .pr-tab-num,
+.pr-tab.is-done .pr-tab-num {
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pr-tab-title {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+/* ---- Panel ---- */
+.pr-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  min-height: 470px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 32px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.pr-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1.6rem, 3.4vw, 3rem);
+  overflow: hidden;
+}
+
+.pr-ghost {
+  position: absolute;
+  top: -0.1em;
+  right: 0.02em;
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(9rem, 17vw, 16rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 1;
+  -webkit-text-stroke: 1px var(--border-strong);
+  pointer-events: none;
+  user-select: none;
+}
+
+.pr-body {
+  position: relative;
+  z-index: 1;
+}
+
+.pr-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.4rem;
+}
+
+.pr-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(104, 92, 240, 0.32);
+}
+
+.pr-chip {
+  padding: 0.38rem 0.78rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pr-count {
+  color: var(--faint);
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.pr-body h3 {
+  max-width: 560px;
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+}
+
+.pr-body p {
+  max-width: 500px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.pr-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pr-points li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.pr-check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  color: var(--accent);
+}
+
+.pr-controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.pr-ctrl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition), transform var(--transition);
+}
+
+.pr-ctrl--text {
+  width: auto;
+  margin-left: 0.4rem;
+  padding: 0 1rem;
+}
+
+.pr-ctrl:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--gradient-soft);
+  transform: translateY(-2px);
+}
+
+.pr-ctrl:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.pr-scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.55rem;
+  color: var(--faint);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pr-scroll-hint svg {
+  color: var(--accent-2);
+}
+
+/* ---- Visual ---- */
+.pr-visual {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+  background: #05070f;
+}
+
+.pr-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.14);
+  transition: opacity 0.9s ease, transform 0s linear 0.9s;
+}
+
+.pr-img.is-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.9s ease, transform 7s ease-out;
+}
+
+.pr-visual-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, rgba(4, 6, 16, 0.78) 0%, rgba(4, 6, 16, 0.08) 52%),
+    radial-gradient(circle at 85% 12%, rgba(124, 108, 255, 0.2), transparent 40%);
+}
+
+.pr-visual-sheen {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: 0;
+  width: 36%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(214, 230, 255, 0.14), transparent);
+  transform: translateX(-220%) skewX(-22deg);
+  animation: pr-sheen 9s ease-in-out infinite;
+}
+
+.pr-visual-badge {
+  position: absolute;
+  left: 1.4rem;
+  bottom: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 1.05rem 0.7rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(8, 12, 28, 0.5);
+  color: #fff;
+  backdrop-filter: blur(14px);
+}
+
+.pr-visual-badge strong {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  background: linear-gradient(110deg, #7cc8ff, #b8a6ff 60%, #e59bff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pr-visual-badge span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ---- Facts strip ---- */
+.pr-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.1rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--surface);
+}
+
+.pr-fact {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.pr-fact-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface-strong);
+  color: var(--accent-2);
+}
+
+.pr-fact strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.pr-fact span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+@keyframes pr-sheen {
+  0%,
+  20% {
+    transform: translateX(-220%) skewX(-22deg);
+  }
+  38%,
+  100% {
+    transform: translateX(380%) skewX(-22deg);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1100px) {
+  .pr-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pr-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pr-facts .button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .pr-panel {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .pr-visual {
+    order: -1;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .pr-ghost {
+    font-size: clamp(7rem, 26vw, 10rem);
+  }
+}
+
+@media (max-width: 680px) {
+  .pr-section.is-scrub .pr-track {
+    height: 480vh;
+  }
+
+  .pr-scroll-hint {
+    display: none;
+  }
+
+  .pr-tabs {
+    display: flex;
+    gap: 0.6rem;
+    margin-inline: -0.2rem;
+    padding: 0.35rem 0.2rem 0.6rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .pr-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pr-tab {
+    flex: 0 0 auto;
+    min-width: 150px;
+    scroll-snap-align: center;
+  }
+
+  .pr-panel {
+    border-radius: 26px;
+  }
+
+  .pr-facts {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.9rem;
+    padding: 1.1rem;
+  }
+
+  .pr-facts .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .pr-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .pr-visual-badge {
+    left: 0.9rem;
+    bottom: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-section.is-scrub .pr-track {
+    height: auto;
+  }
+
+  .pr-section.is-scrub .pr-sticky {
+    position: relative;
+    top: auto;
+  }
+
+  .pr-visual-sheen,
+  .pr-scroll-hint {
+    display: none;
+  }
+
+  .pr-img,
+  .pr-img.is-active {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+}

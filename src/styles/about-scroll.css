@@ -1,0 +1,413 @@
+/* About — scroll-driven expanding image with typed copy.
+   Default (no JS / reduced motion) = a static, fully visible full-screen panel.
+   `.is-scrub` is added by About.jsx when the scroll animation is active. */
+.about-scroll {
+  position: relative;
+  background: var(--bg);
+}
+
+.about-track {
+  position: relative;
+}
+
+.about-scroll.is-scrub .about-track {
+  height: 340vh;
+}
+
+.about-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.about-scroll.is-scrub .about-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  min-height: 0;
+}
+
+/* ---- Media (expands via clip-path) ---- */
+.about-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #05070f;
+  will-change: clip-path;
+}
+
+.about-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% center;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.about-media-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(4, 6, 16, 0.9) 0%, rgba(4, 6, 16, 0.64) 46%, rgba(4, 6, 16, 0.3) 100%),
+    linear-gradient(0deg, rgba(4, 6, 16, 0.72) 0%, transparent 48%);
+}
+
+/* ---- Small-state copy (visible while the image is small) ---- */
+.about-preface {
+  position: absolute;
+  top: calc(var(--header-height) + 2.2vh);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding-inline: 5%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.about-preface .eyebrow {
+  justify-content: center;
+  margin-bottom: 0.9rem;
+}
+
+.about-preface-title {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.6vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.about-preface-title .serif-accent {
+  display: block;
+}
+
+.about-hint {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.about-hint svg {
+  color: var(--accent-2);
+  animation: about-bob 1.6s ease-in-out infinite;
+}
+
+.about-scroll:not(.is-scrub) .about-preface,
+.about-scroll:not(.is-scrub) .about-hint {
+  display: none;
+}
+
+/* ---- Full-screen overlay copy ---- */
+.about-overlay {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: calc(var(--header-height) + 2rem) 0 clamp(2.5rem, 9vh, 6rem);
+  color: #fff;
+}
+
+.about-scroll.is-scrub .about-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 0;
+}
+
+.about-overlay-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.about-overlay-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.about-overlay-meta .eyebrow {
+  margin-bottom: 0;
+  color: #9ed6ff;
+}
+
+.about-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.72rem;
+  font-weight: 700;
+  backdrop-filter: blur(12px);
+}
+
+.about-tag svg {
+  color: #8fd0ff;
+}
+
+.about-title {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5.4vw, 5.8rem);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.about-title .tw {
+  display: block;
+}
+
+.about-overlay .serif-accent {
+  background-image: linear-gradient(100deg, #7cc8ff 0%, #a99bff 55%, #e59bff 100%);
+  font-size: 0.9em;
+}
+
+.about-overlay-text {
+  max-width: 660px;
+  margin: 1.4rem 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.75;
+}
+
+.about-overlay-text--soft {
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---- Typed text ---- */
+.about-scroll.is-scrub .tw-off {
+  visibility: hidden;
+}
+
+.tw.is-typing .tw-on::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  margin-left: 3px;
+  vertical-align: -0.08em;
+  background: var(--caret, currentColor);
+  animation: about-caret 0.8s steps(1) infinite;
+}
+
+.tw--accent {
+  --caret: #b9a7ff;
+}
+
+/* ---- Aside (year badge, note, caption) ---- */
+.about-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.about-year {
+  display: grid;
+  place-content: center;
+  width: 108px;
+  height: 108px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  backdrop-filter: blur(16px);
+}
+
+.about-year strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: -0.06em;
+}
+
+.about-year span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.about-note {
+  width: min(100%, 340px);
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 22px;
+  background: rgba(8, 12, 28, 0.5);
+  backdrop-filter: blur(16px);
+}
+
+.about-note-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #9ed6ff;
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.about-note p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.about-caption {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: right;
+}
+
+.about-caption strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.about-caption span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---- Details below the stage ---- */
+.about-details .about-principles {
+  margin-top: 0;
+}
+
+.about-details-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@keyframes about-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes about-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-overlay-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4rem;
+  }
+
+  .about-aside {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .about-year {
+    width: 88px;
+    height: 88px;
+  }
+
+  .about-caption {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-overlay {
+    padding-bottom: 2rem;
+  }
+
+  .about-overlay-meta {
+    margin-bottom: 0.9rem;
+  }
+
+  .about-title {
+    font-size: clamp(2rem, 9.2vw, 3rem);
+  }
+
+  .about-overlay-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  /* Keep the full-screen frame uncluttered on phones. */
+  .about-aside {
+    display: none;
+  }
+
+  .about-preface-title {
+    font-size: clamp(1.8rem, 8.6vw, 2.6rem);
+  }
+
+  .about-hint {
+    top: 73%;
+  }
+}
+
+@media (max-height: 700px) {
+  .about-note,
+  .about-caption {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hint svg,
+  .tw.is-typing .tw-on::after {
+    animation: none;
+  }
+}
