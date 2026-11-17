@@ -4,7 +4,7 @@
   --font-serif: "Instrument Serif", Georgia, serif;
 
   --container: 1240px;
-  --section-space: clamp(5.5rem, 9vw, 9.5rem);
+  --section-space: clamp(3.5rem, 6vw, 6rem);
   --radius-sm: 12px;
   --radius-md: 18px;
   --radius-lg: 28px;

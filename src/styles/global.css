@@ -134,7 +134,7 @@ main > .section:nth-of-type(even) {
 }
 
 .section--tight {
-  padding-block: clamp(4.5rem, 7vw, 7rem);
+  padding-block: clamp(3rem, 4.5vw, 4.5rem);
 }
 
 .section-line {
