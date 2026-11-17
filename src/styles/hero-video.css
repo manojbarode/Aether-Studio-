@@ -365,7 +365,7 @@
 @media (max-width: 560px) {
   .hero--video {
     min-height: max(100svh, 720px);
-    padding-block: calc(var(--header-height) + 6rem) 4.75rem;
+    padding-block: calc(var(--header-height) + 8rem) 4.75rem;
   }
 
   .hero--video .hero-layout {
@@ -410,8 +410,15 @@
   }
 
   .hero--video .hero-video {
-    object-position: 70% center;
-    transform: translateX(1%) scale(1.2);
+    object-position: 64% center;
+    transform: scale(1.12);
+    filter: saturate(1.2) contrast(1.08) brightness(1.02);
+  }
+
+  .hero--video .hero-video-scrim {
+    background:
+      linear-gradient(90deg, rgba(3, 5, 14, 0.78), rgba(3, 5, 14, 0.48) 58%, rgba(3, 5, 14, 0.22)),
+      linear-gradient(0deg, rgba(3, 5, 14, 0.62), transparent 62%, rgba(3, 5, 14, 0.2));
   }
 
 }
@@ -502,7 +509,7 @@
 @media (max-height: 740px) and (max-width: 560px) {
   .hero--video {
     min-height: 100svh;
-    padding-block: calc(var(--header-height) + 4rem) 1.75rem;
+    padding-block: calc(var(--header-height) + 5.5rem) 1.75rem;
   }
 
   .hero--video .hero-title {
