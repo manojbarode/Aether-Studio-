@@ -365,7 +365,7 @@
 @media (max-width: 560px) {
   .hero--video {
     min-height: max(100svh, 720px);
-    padding-block: calc(var(--header-height) + 4rem) 4.75rem;
+    padding-block: calc(var(--header-height) + 6rem) 4.75rem;
   }
 
   .hero--video .hero-layout {
@@ -502,7 +502,7 @@
 @media (max-height: 740px) and (max-width: 560px) {
   .hero--video {
     min-height: 100svh;
-    padding-block: calc(var(--header-height) + 2.5rem) 1.75rem;
+    padding-block: calc(var(--header-height) + 4rem) 1.75rem;
   }
 
   .hero--video .hero-title {
