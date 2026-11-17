@@ -392,8 +392,17 @@
   }
 
   .hero--video .hero-actions {
+    display: flex;
+    width: min(100%, 420px);
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.7rem;
     margin-top: 1.5rem;
+  }
+
+  .hero--video .hero-actions .button {
+    justify-content: center;
+    width: 100%;
   }
 
   .hero--video .hero-meta {
