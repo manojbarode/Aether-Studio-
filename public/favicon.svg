@@ -1,11 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#b7a4ff" />
-      <stop offset="1" stop-color="#7962ff" />
+    <linearGradient id="tile" x1="8" y1="4" x2="57" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20223b" />
+      <stop offset="1" stop-color="#0c0e1b" />
     </linearGradient>
+    <linearGradient id="aether" x1="18" y1="12" x2="49" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e5d8ff" />
+      <stop offset=".48" stop-color="#aa8cff" />
+      <stop offset="1" stop-color="#7258ff" />
+    </linearGradient>
+    <filter id="glow" x="8" y="5" width="48" height="55" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="2.1" />
+    </filter>
   </defs>
-  <rect width="64" height="64" rx="18" fill="#090b16" />
-  <path d="M32 9 55 51H9L32 9Zm0 12.2L19.3 44h25.4L32 21.2Z" fill="url(#a)" fill-rule="evenodd" />
-  <circle cx="32" cy="38" r="4.2" fill="#f5f2ff" />
+  <rect x="2" y="2" width="60" height="60" rx="19" fill="url(#tile)" />
+  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="18.25" stroke="#c2adff" stroke-opacity=".2" stroke-width="1.5" />
+  <path d="m32 12 18 36H14l18-36Z" fill="none" stroke="#987bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" opacity=".7" filter="url(#glow)" />
+  <path d="m32 12 18 36H14l18-36Z" fill="none" stroke="url(#aether)" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+  <path d="M22.5 38h19" stroke="#f3efff" stroke-linecap="round" stroke-width="3.5" />
+  <circle cx="32" cy="12" r="2.6" fill="#fff" />
 </svg>
