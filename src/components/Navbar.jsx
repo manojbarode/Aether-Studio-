@@ -30,7 +30,7 @@ export default function Navbar({ theme, toggleTheme }) {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""} ${menuOpen ? "is-menu-open" : ""}`}>
       <div className="container nav-inner">
-        <Brand onClick={closeMenu} />
+        <Brand onClick={closeMenu} theme={theme} />
 
         <nav className="nav-links" aria-label="Primary navigation">
           {navLinks.map((link) => (
