@@ -78,7 +78,7 @@ export default function HomePage() {
         <Contact />
       </main>
 
-      <Footer />
+      <Footer theme={theme} />
       <BackToTop />
     </div>
   );

@@ -5,7 +5,7 @@ import Button from "./Button.jsx";
 import { navLinks, site } from "../data/site.js";
 import { services } from "../data/services.js";
 
-export default function Footer() {
+export default function Footer({ theme = "dark" }) {
   const reduceMotion = useReducedMotion();
   const year = new Date().getFullYear();
 
@@ -27,7 +27,7 @@ export default function Footer() {
 
         <div className="footer-main">
           <div className="footer-brand-block">
-            <Brand />
+            <Brand theme={theme} />
             <p>{site.intro}</p>
           </div>
 
