@@ -28,7 +28,7 @@ export default function Navbar({ theme, toggleTheme }) {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""} ${menuOpen ? "is-menu-open" : ""}`}>
       <div className="container nav-inner">
         <Brand onClick={closeMenu} />
 
