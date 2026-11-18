@@ -364,8 +364,8 @@
 
 @media (max-width: 560px) {
   .hero--video {
-    min-height: max(100svh, 720px);
-    padding-block: calc(var(--header-height) + 10rem) 4.75rem;
+    min-height: max(100svh, 760px);
+    padding-block: calc(var(--header-height) + 12rem) 4.75rem;
   }
 
   .hero--video .hero-layout {
@@ -386,9 +386,9 @@
   }
 
   .hero--video .hero-subtitle {
-    margin-top: 1.25rem;
-    font-size: 0.98rem;
-    line-height: 1.6;
+    margin-top: 1.35rem;
+    font-size: 1.06rem;
+    line-height: 1.62;
   }
 
   .hero--video .hero-actions {
@@ -432,7 +432,7 @@
 
 @media (max-width: 380px) {
   .hero--video {
-    min-height: max(100svh, 700px);
+    min-height: max(100svh, 760px);
   }
 
   .hero--video .hero-layout {
@@ -440,11 +440,11 @@
   }
 
   .hero--video .hero-title {
-    font-size: clamp(2.2rem, 10.5vw, 2.65rem);
+    font-size: clamp(2.3rem, 11vw, 2.8rem);
   }
 
   .hero--video .hero-subtitle {
-    font-size: 0.92rem;
+    font-size: 1rem;
   }
 }
 
@@ -516,18 +516,19 @@
 @media (max-height: 740px) and (max-width: 560px) {
   .hero--video {
     min-height: 100svh;
-    padding-block: calc(var(--header-height) + 8rem) 1.75rem;
+    min-height: max(100svh, 760px);
+    padding-block: calc(var(--header-height) + 10rem) 2.5rem;
   }
 
   .hero--video .hero-title {
-    font-size: clamp(2.15rem, 9.5vw, 2.9rem);
-    line-height: 0.96;
+    font-size: clamp(2.3rem, 10vw, 3rem);
+    line-height: 0.98;
   }
 
   .hero--video .hero-subtitle {
-    margin-top: 0.75rem;
-    font-size: 0.88rem;
-    line-height: 1.45;
+    margin-top: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
   }
 
   .hero--video .hero-actions {
