@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { Asterisk } from "lucide-react";
 
 export default function Preloader({ onDone }) {
   const reduceMotion = useReducedMotion();
@@ -22,7 +21,7 @@ export default function Preloader({ onDone }) {
       <div className="preloader-inner">
         <div className="preloader-brand">
           <span className="preloader-mark" aria-hidden="true">
-            <Asterisk size={22} strokeWidth={2.3} />
+            <img src="/brand-mark.svg" alt="" />
           </span>
           AETHER
         </div>
