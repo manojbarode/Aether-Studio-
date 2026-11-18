@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ring" x1="8" y1="48" x2="56" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#25aaff" />
+      <stop offset=".48" stop-color="#e7f8ff" />
+      <stop offset="1" stop-color="#ffdca0" />
+    </linearGradient>
+    <linearGradient id="metal" x1="21" y1="51" x2="43" y2="14" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#70c9ff" />
+      <stop offset=".36" stop-color="#f8fcff" />
+      <stop offset=".72" stop-color="#d9e9ff" />
+      <stop offset="1" stop-color="#fff8e9" />
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="27" fill="none" stroke="url(#ring)" stroke-width="1.35" opacity=".92" filter="url(#glow)" />
+  <path d="M17.5 47 30.6 18.3c.55-1.2 2.25-1.2 2.8 0L46.5 47h-9.2L32 34.4 26.7 47h-9.2Z" fill="url(#metal)" />
+  <path d="M14.8 39.4c8.4-9.1 13.1 1.8 21.5 2.1 5.4.2 9.5-3.3 13.2-8.3-2.3 9.4-7.8 14.4-14.1 14.2-7.2-.2-12.6-9.9-20.6-8Z" fill="#06111f" stroke="#dff7ff" stroke-linejoin="round" stroke-width="1.25" />
+  <path d="M14.8 38.5c8.4-8 13.1 2.2 21.5 2.5 5.4.2 9.5-2.8 13.2-7.1-2.3 7.8-7.8 12.2-14.1 12-7.2-.2-12.6-8.6-20.6-7.4Z" fill="url(#metal)" opacity=".96" />
+  <path d="m45.7 19 .7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z" fill="#fff" />
+</svg>
